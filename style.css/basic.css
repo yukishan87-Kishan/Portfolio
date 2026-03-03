@@ -92,10 +92,31 @@ footer {
 
 /* Dark Mode */
 .dark {
-    background: #111;
-    color: white;
+    background: #1a1a1a;
+    color: #e0e0e0;
+}
+
+.dark nav {
+    background: #0a0a0a;
+}
+
+.dark header {
+    background: #0f2239;
+}
+
+.dark section {
+    background: #1a1a1a;
 }
 
 .dark .project-card {
     background: #222;
+    color: #e0e0e0;
+}
+
+.dark .bar {
+    background: #333;
+}
+
+.dark footer {
+    background: #0a0a0a;
 }
