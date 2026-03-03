@@ -1,30 +1,38 @@
-
 html {
     scroll-behavior: smooth;
 }
 
 body {
-    font-family: Arial;
     margin: 0;
+    font-family: Arial, sans-serif;
     background: #f4f4f4;
+    color: #333;
+    transition: 0.3s;
 }
 
 nav {
-    background: #000;
-    padding: 15px;
-    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background: #111;
+    color: white;
 }
 
 nav a {
     color: white;
-    margin: 15px;
+    margin: 0 10px;
     text-decoration: none;
-    font-size: 18px;
+}
+
+nav button {
+    padding: 5px 10px;
+    cursor: pointer;
 }
 
 header {
     text-align: center;
-    padding: 50px;
+    padding: 60px 20px;
     background: #1e3a8a;
     color: white;
 }
@@ -32,14 +40,6 @@ header {
 .profile {
     width: 150px;
     border-radius: 50%;
-    margin-bottom: 20px;
-}
-
-section {
-    background: white;
-    margin: 20px;
-    padding: 30px;
-    border-radius: 10px;
 }
 
 .btn {
@@ -53,6 +53,49 @@ section {
     font-weight: bold;
 }
 
-.btn:hover {
-    background: lightgray;
+section {
+    padding: 50px;
+    max-width: 900px;
+    margin: auto;
+}
+
+.skill {
+    margin-bottom: 15px;
+}
+
+.bar {
+    background: #ddd;
+    height: 10px;
+    border-radius: 5px;
+}
+
+.bar div {
+    height: 10px;
+    background: #1e3a8a;
+    border-radius: 5px;
+}
+
+.project-card {
+    background: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #111;
+    color: white;
+}
+
+/* Dark Mode */
+.dark {
+    background: #111;
+    color: white;
+}
+
+.dark .project-card {
+    background: #222;
 }

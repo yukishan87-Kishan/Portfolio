@@ -1,5 +1,3 @@
-console.log("Portfolio website loaded");
-
-document.addEventListener("DOMContentLoaded", function () {
-    alert("Welcome to my portfolio website!");
+document.getElementById("modeToggle").addEventListener("click", function () {
+    document.body.classList.toggle("dark");
 });

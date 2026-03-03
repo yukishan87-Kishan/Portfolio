@@ -1,73 +1,97 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Kishan Y U - Portfolio</title>
-
+    <title>Kishan Y U | Portfolio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <nav>
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
+    <h2 class="logo">Kishan</h2>
+    <div>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+        <button id="modeToggle">🌙</button>
+    </div>
 </nav>
 
-<header id="home">
-    <img src="profile.jpg" alt="Profile Photo" class="profile">
-    <h1>Kishan Y U</h1>
-    <p>Computer Science Student | Programmer</p>
-
-    <a href="resume.pdf" download class="btn">Download Resume</a>
+<header>
+    <div class="hero">
+        <img src="profile.jpg" class="profile">
+        <h1>Kishan Y U</h1>
+        <p>Computer Science Student | Java & DSA Enthusiast</p>
+        <a href="resume.pdf" download class="btn">Download Resume</a>
+    </div>
 </header>
 
 <section id="about">
     <h2>About Me</h2>
     <p>
-        I am a Computer Science student passionate about programming,
-        data structures, and digital electronics. I enjoy solving
-        technical problems and building projects that improve my
-        practical knowledge.
+        I am passionate about programming, digital electronics, and solving 
+        complex problems using Data Structures and Algorithms. 
+        I enjoy building real-world projects and continuously improving my skills.
     </p>
 </section>
 
 <section id="skills">
     <h2>Skills</h2>
 
-    <ul>
-        <li>C Programming</li>
-        <li>C++</li>
-        <li>Java</li>
-        <li>Python</li>
-        <li>HTML & CSS</li>
-    </ul>
+    <div class="skill">
+        <p>Java</p>
+        <div class="bar"><div style="width:85%"></div></div>
+    </div>
+
+    <div class="skill">
+        <p>C++</p>
+        <div class="bar"><div style="width:75%"></div></div>
+    </div>
+
+    <div class="skill">
+        <p>Python</p>
+        <div class="bar"><div style="width:70%"></div></div>
+    </div>
+
+    <div class="skill">
+        <p>HTML & CSS</p>
+        <div class="bar"><div style="width:80%"></div></div>
+    </div>
 
 </section>
 
 <section id="projects">
     <h2>Projects</h2>
 
-    <ul>
-        <li>Student Management System (Java)</li>
-        <li>Digital Electronics Logic Simulator</li>
-        <li>Personal Portfolio Website</li>
-    </ul>
+    <div class="project-card">
+        <h3>Student Management System</h3>
+        <p>Built using Java with OOP concepts and file handling.</p>
+    </div>
+
+    <div class="project-card">
+        <h3>Logic Circuit Simulator</h3>
+        <p>Designed digital circuits like ripple carry adder and counters.</p>
+    </div>
+
+    <div class="project-card">
+        <h3>Portfolio Website</h3>
+        <p>Responsive personal website using HTML, CSS and JavaScript.</p>
+    </div>
 
 </section>
 
 <section id="contact">
     <h2>Contact</h2>
-
-    <p>Email: kishan@email.com</p>
-    <p>LinkedIn: linkedin.com/in/kishan</p>
-    <p>GitHub: github.com/kishan</p>
-
+    <p>Email: yourmail@gmail.com</p>
+    <p>LinkedIn: linkedin.com/in/yourprofile</p>
+    <p>GitHub: github.com/yourusername</p>
 </section>
+
+<footer>
+    <p>© 2026 Kishan Y U | All Rights Reserved</p>
+</footer>
 
 <script src="script.js"></script>
 
