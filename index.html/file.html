@@ -1,94 +1,189 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Kishan Y U | Portfolio</title>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style.css/basic.css">
+    <title>Kishan Y U - Portfolio</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+    <style>
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --text-primary: #1a1a1a;
+            --text-secondary: #6c757d;
+            --accent: #007bff;
+            --accent-hover: #0056b3;
+            --border: #e9ecef;
+            --shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        [data-theme="dark"] {
+            --bg-primary: #1a1a1a;
+            --bg-secondary: #2d2d2d;
+            --text-primary: #ffffff;
+            --text-secondary: #adb5bd;
+            --accent: #4dabf7;
+            --accent-hover: #339af0;
+            --border: #404040;
+            --shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; line-height: 1.6; color: var(--text-primary); background: var(--bg-primary); transition: all 0.3s ease; }
+        nav { background: var(--bg-secondary); padding: 1rem 2rem; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--border); }
+        nav .logo { font-size: 1.5rem; font-weight: 700; color: var(--accent); }
+        nav ul { list-style: none; display: flex; gap: 2rem; align-items: center; }
+        nav a { color: var(--text-primary); text-decoration: none; font-weight: 500; transition: color 0.3s; }
+        nav a:hover { color: var(--accent); }
+        #modeToggle { background: var(--accent); color: white; border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer; font-weight: 500; }
+        header { background: linear-gradient(135deg, var(--accent), var(--accent-hover)); color: white; text-align: center; padding: 5rem 2rem; }
+        .profile img { width: 150px; height: 150px; border-radius: 50%; border: 5px solid white; margin-bottom: 1rem; box-shadow: var(--shadow); }
+        .btn { background: white; color: var(--accent); padding: 1rem 2rem; border: none; border-radius: 50px; font-weight: 600; text-decoration: none; display: inline-block; transition: all 0.3s; box-shadow: var(--shadow); }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.2); }
+        section { padding: 4rem 2rem; max-width: 1200px; margin: 0 auto; }
+        h2 { font-size: 2.5rem; text-align: center; margin-bottom: 3rem; color: var(--text-primary); }
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .skill { margin-bottom: 2rem; }
+        .skill-bar { background: var(--border); height: 10px; border-radius: 5px; overflow: hidden; margin-top: 0.5rem; }
+        .skill-progress { height: 100%; background: var(--accent); border-radius: 5px; width: 0; transition: width 1.5s ease-in-out; }
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
+        .project-card { background: var(--bg-secondary); padding: 2rem; border-radius: 15px; box-shadow: var(--shadow); transition: transform 0.3s, box-shadow 0.3s; }
+        .project-card:hover { transform: translateY(-5px); box-shadow: 0 10px 40px rgba(0,0,0,0.2); }
+        .project-card h3 { color: var(--accent); margin-bottom: 1rem; }
+        .contact-form { max-width: 600px; margin: 0 auto; }
+        .form-group { margin-bottom: 1.5rem; }
+        input, textarea { width: 100%; padding: 1rem; border: 1px solid var(--border); border-radius: 8px; font-family: inherit; transition: border 0.3s; }
+        input:focus, textarea:focus { outline: none; border-color: var(--accent); }
+        button[type="submit"] { width: 100%; background: var(--accent); color: white; border: none; padding: 1rem; border-radius: 8px; font-weight: 600; cursor: pointer; transition: background 0.3s; }
+        button[type="submit"]:hover { background: var(--accent-hover); }
+        .social-links { display: flex; justify-content: center; gap: 1rem; margin-top: 2rem; }
+        .social-links a { color: var(--text-secondary); font-size: 1.5rem; transition: color 0.3s; }
+        .social-links a:hover { color: var(--accent); }
+        footer { background: var(--bg-secondary); text-align: center; padding: 2rem; border-top: 1px solid var(--border); }
+        @media (max-width: 768px) { nav ul { flex-direction: column; gap: 1rem; } section { padding: 2rem 1rem; } h2 { font-size: 2rem; } }
+        .animate { opacity: 0; transform: translateY(30px); transition: all 0.6s; }
+        .animate.visible { opacity: 1; transform: translateY(0); }
+    </style>
 </head>
-
 <body>
+    <nav>
+        <ul>
+            <li><h2 class="logo">Kishan</h2></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><button id="modeToggle">🌙 Dark</button></li>
+        </ul>
+    </nav>
+    <header>
+        <div class="hero">
+            <img src="../assests/myPhoto.jpeg" alt="Kishan Y U Profile" class="profile">
+            <h1>Kishan Y U</h1>
+            <p>Computer Science Student | Java & DSA Enthusiast</p>
+            <a href="resume.pdf" download class="btn">Download Resume</a>
+        </div>
+    </header>
+    <section id="about" class="animate">
+        <h2>About Me</h2>
+        <p>I am passionate about programming and solving complex problems using Data Structures and Algorithms. I enjoy building real-world projects and continuously improving my skills.</p>
+    </section>
+    <section id="skills" class="animate">
+        <h2>Skills</h2>
+        <div class="skills-grid">
+            <div class="skill">
+                <label>Java</label>
+                <div class="skill-bar"><div class="skill-progress" data-width="85%"></div></div>
+            </div>
+            <div class="skill">
+                <label>C++</label>
+                <div class="skill-bar"><div class="skill-progress" data-width="75%"></div></div>
+            </div>
+            <div class="skill">
+                <label>Python</label>
+                <div class="skill-bar"><div class="skill-progress" data-width="70%"></div></div>
+            </div>
+            <div class="skill">
+                <label>HTML & CSS</label>
+                <div class="skill-bar"><div class="skill-progress" data-width="80%"></div></div>
+            </div>
+        </div>
+    </section>
+    <section id="projects" class="animate">
+        <h2>Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <h3>Grade Calculation of a Student</h3>
+                <p>Built using C++ with OOP concepts and file handling.</p>
+                <a href="https://github.com/yukishan87-Kishan/grade-calculator" target="_blank">View on GitHub</a>
+            </div>
+            <div class="project-card">
+                <h3>Portfolio Website</h3>
+                <p>Responsive personal website using HTML, CSS and JavaScript.</p>
+                <a href="https://github.com/yukishan87-Kishan/portfolio" target="_blank">View on GitHub</a>
+            </div>
+        </div>
+    </section>
+    <section id="contact" class="animate">
+        <h2>Contact</h2>
+        <form class="contact-form" onsubmit="handleSubmit(event)">
+            <div class="form-group">
+                <input type="text" id="name" required placeholder="Your Name">
+            </div>
+            <div class="form-group">
+                <input type="email" id="email" required placeholder="Your Email">
+            </div>
+            <div class="form-group">
+                <textarea id="message" required rows="5" placeholder="Your Message"></textarea>
+            </div>
+            <button type="submit">Send Message</button>
+        </form>
+        <div class="social-links">
+            <a href="mailto:yukishan87@gmail.com">📧</a>
+            <a href="https://www.linkedin.com/in/Kishan06" target="_blank">💼</a>
+            <a href="https://github.com/yukishan87-Kishan" target="_blank">💻</a>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2026 Kishan Y U. All Rights Reserved.</p>
+    </footer>
+    <script>
+        // Theme toggle
+        const toggle = document.getElementById('modeToggle');
+        toggle.addEventListener('click', () => {
+            document.body.dataset.theme = document.body.dataset.theme === 'dark' ? '' : 'dark';
+            toggle.textContent = document.body.dataset.theme === 'dark' ? '☀️ Light' : '🌙 Dark';
+        });
 
-<nav>
-    <h2 class="logo">Kishan</h2>
-    <div>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-        <button id="modeToggle">🌙</button>
-    </div>
-</nav>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', e => {
+                e.preventDefault();
+                document.querySelector(anchor.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
 
-<header>
-    <div class="hero">
-        <img src="../assests/myPhoto.jpeg" class="profile">
-        <h1>Kishan Y U</h1>
-        <p>Computer Science Student | Java & DSA Enthusiast</p>
-        <a href="resume.pdf" download class="btn">Download Resume</a>
-    </div>
-</header>
+        // Animate on scroll
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        });
+        document.querySelectorAll('.animate').forEach(el => observer.observe(el));
 
-<section id="about">
-    <h2>About Me</h2>
-    <p>
-        I am passionate about programming, and solving 
-        complex problems using Data Structures and Algorithms. 
-        I enjoy building real-world projects and continuously improving my skills.
-    </p>
-</section>
+        // Skill bars animation
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.skill-progress').forEach(bar => {
+                bar.style.width = bar.dataset.width;
+            });
+        });
 
-<section id="skills">
-    <h2>Skills</h2>
-
-    <div class="skill">
-        <p>Java</p>
-        <div class="bar"><div style="width:85%"></div></div>
-    </div>
-
-    <div class="skill">
-        <p>C++</p>
-        <div class="bar"><div style="width:75%"></div></div>
-    </div>
-
-    <div class="skill">
-        <p>Python</p>
-        <div class="bar"><div style="width:70%"></div></div>
-    </div>
-
-    <div class="skill">
-        <p>HTML & CSS</p>
-        <div class="bar"><div style="width:80%"></div></div>
-    </div>
-
-</section>
-
-<section id="projects">
-    <h2>Projects</h2>
-
-    <div class="project-card">
-        <h3>Grade Calculation of a Student</h3>
-        <p>Built using C++ with OOP concepts and file handling.</p>
-    </div>
-
-    <div class="project-card">
-        <h3>Portfolio Website</h3>
-        <p>Responsive personal website using HTML, CSS and JavaScript.</p>
-    </div>
-
-</section>
-
-<section id="contact">
-    <h2>Contact</h2>
-    <p>Email: yukishan87@gmail.com</p>
-    <p>LinkedIn: www.linkedin.com/in/Kishan06</p>
-    <p>GitHub: github.com/yukishan87-Kishan</p>
-</section>
-
-<footer>
-    <p>© 2026 Kishan Y U | All Rights Reserved</p>
-</footer>
-
-<script src="../script.js/simple.js"></script>
-
+        // Contact form handler
+        function handleSubmit(e) {
+            e.preventDefault();
+            alert('Thank you for your message! (Demo - integrate with backend like EmailJS for real use)');
+            e.target.reset();
+        }
+    </script>
 </body>
 </html>
