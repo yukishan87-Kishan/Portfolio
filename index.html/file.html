@@ -4,7 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kishan Y U - Portfolio</title>
+
+    <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+          integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer"> <!-- [web:2][web:5] -->
+
     <style>
         :root {
             --bg-primary: #ffffff;
@@ -16,6 +26,7 @@
             --border: #e9ecef;
             --shadow: 0 4px 20px rgba(0,0,0,0.1);
         }
+
         [data-theme="dark"] {
             --bg-primary: #1a1a1a;
             --bg-secondary: #2d2d2d;
@@ -26,41 +37,312 @@
             --border: #404040;
             --shadow: 0 4px 20px rgba(0,0,0,0.3);
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; line-height: 1.6; color: var(--text-primary); background: var(--bg-primary); transition: all 0.3s ease; }
-        nav { background: var(--bg-secondary); padding: 1rem 2rem; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--border); }
-        nav .logo { font-size: 1.5rem; font-weight: 700; color: var(--accent); }
-        nav ul { list-style: none; display: flex; gap: 2rem; align-items: center; }
-        nav a { color: var(--text-primary); text-decoration: none; font-weight: 500; transition: color 0.3s; }
-        nav a:hover { color: var(--accent); }
-        #modeToggle { background: var(--accent); color: white; border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer; font-weight: 500; }
-        header { background: linear-gradient(135deg, var(--accent), var(--accent-hover)); color: white; text-align: center; padding: 5rem 2rem; }
-        .profile img { width: 150px; height: 150px; border-radius: 50%; border: 5px solid white; margin-bottom: 1rem; box-shadow: var(--shadow); }
-        .btn { background: white; color: var(--accent); padding: 1rem 2rem; border: none; border-radius: 50px; font-weight: 600; text-decoration: none; display: inline-block; transition: all 0.3s; box-shadow: var(--shadow); }
-        .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.2); }
-        section { padding: 4rem 2rem; max-width: 1200px; margin: 0 auto; }
-        h2 { font-size: 2.5rem; text-align: center; margin-bottom: 3rem; color: var(--text-primary); }
-        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-        .skill { margin-bottom: 2rem; }
-        .skill-bar { background: var(--border); height: 10px; border-radius: 5px; overflow: hidden; margin-top: 0.5rem; }
-        .skill-progress { height: 100%; background: var(--accent); border-radius: 5px; width: 0; transition: width 1.5s ease-in-out; }
-        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
-        .project-card { background: var(--bg-secondary); padding: 2rem; border-radius: 15px; box-shadow: var(--shadow); transition: transform 0.3s, box-shadow 0.3s; }
-        .project-card:hover { transform: translateY(-5px); box-shadow: 0 10px 40px rgba(0,0,0,0.2); }
-        .project-card h3 { color: var(--accent); margin-bottom: 1rem; }
-        .contact-form { max-width: 600px; margin: 0 auto; }
-        .form-group { margin-bottom: 1.5rem; }
-        input, textarea { width: 100%; padding: 1rem; border: 1px solid var(--border); border-radius: 8px; font-family: inherit; transition: border 0.3s; }
-        input:focus, textarea:focus { outline: none; border-color: var(--accent); }
-        button[type="submit"] { width: 100%; background: var(--accent); color: white; border: none; padding: 1rem; border-radius: 8px; font-weight: 600; cursor: pointer; transition: background 0.3s; }
-        button[type="submit"]:hover { background: var(--accent-hover); }
-        .social-links { display: flex; justify-content: center; gap: 1rem; margin-top: 2rem; }
-        .social-links a { color: var(--text-secondary); font-size: 1.5rem; transition: color 0.3s; }
-        .social-links a:hover { color: var(--accent); }
-        footer { background: var(--bg-secondary); text-align: center; padding: 2rem; border-top: 1px solid var(--border); }
-        @media (max-width: 768px) { nav ul { flex-direction: column; gap: 1rem; } section { padding: 2rem 1rem; } h2 { font-size: 2rem; } }
-        .animate { opacity: 0; transform: translateY(30px); transition: all 0.6s; }
-        .animate.visible { opacity: 1; transform: translateY(0); }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            background: var(--bg-secondary);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        #modeToggle {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+            color: white;
+            text-align: center;
+            padding: 4rem 1.5rem;
+        }
+
+        .hero {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Smaller, optimal circular profile image */
+        .profile-wrapper {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 1rem auto;
+            border: 4px solid #ffffff;
+            box-shadow: var(--shadow);
+        }
+
+        .profile-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* keep aspect ratio, crop nicely */ /* [web:6][web:9] */
+            display: block;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.3rem;
+        }
+
+        header p {
+            margin-bottom: 1.5rem;
+            opacity: 0.95;
+        }
+
+        .btn {
+            background: white;
+            color: var(--accent);
+            padding: 0.8rem 1.8rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            box-shadow: var(--shadow);
+            font-size: 0.95rem;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+        }
+
+        section {
+            padding: 3.5rem 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2.5rem;
+            color: var(--text-primary);
+        }
+
+        #about p {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill {
+            margin-bottom: 1rem;
+        }
+
+        .skill label {
+            font-weight: 500;
+        }
+
+        .skill-bar {
+            background: var(--border);
+            height: 9px;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-top: 0.4rem;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: var(--accent);
+            border-radius: 5px;
+            width: 0;
+            transition: width 1.5s ease-in-out;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background: var(--bg-secondary);
+            padding: 1.5rem;
+            border-radius: 14px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+        }
+
+        .project-card h3 {
+            color: var(--accent);
+            margin-bottom: 0.6rem;
+            font-size: 1.2rem;
+        }
+
+        .project-card p {
+            margin-bottom: 0.8rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .project-card a {
+            font-size: 0.9rem;
+            text-decoration: none;
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .project-card a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-form {
+            max-width: 550px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.3rem;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 0.9rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-family: inherit;
+            transition: border 0.3s;
+            font-size: 0.95rem;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 0.9rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-size: 0.95rem;
+        }
+
+        button[type="submit"]:hover {
+            background: var(--accent-hover);
+        }
+
+        /* Real app icons at bottom using Font Awesome */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.4rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            color: var(--text-secondary);
+            font-size: 1.6rem;
+            transition: color 0.3s, transform 0.2s;
+        }
+
+        .social-links a:hover {
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        footer {
+            background: var(--bg-secondary);
+            text-align: center;
+            padding: 1.8rem;
+            border-top: 1px solid var(--border);
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1rem;
+            }
+
+            header {
+                padding: 3rem 1rem;
+            }
+
+            h2 {
+                font-size: 1.7rem;
+            }
+        }
+
+        .animate {
+            opacity: 0;
+            transform: translateY(26px);
+            transition: all 0.6s;
+        }
+
+        .animate.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body>
@@ -74,54 +356,77 @@
             <li><button id="modeToggle">🌙 Dark</button></li>
         </ul>
     </nav>
+
     <header>
         <div class="hero">
-            <img src="../assests/myPhoto.jpeg" alt="Kishan Y U Profile" class="profile">
+            <div class="profile-wrapper">
+                <!-- Reduced, optimal profile size -->
+                <img src="../assets/myPhoto.jpeg" alt="Kishan Y U Profile" class="profile">
+            </div>
             <h1>Kishan Y U</h1>
-            <p>Computer Science Student | Java & DSA Enthusiast</p>
+            <p>Computer Science Student | Java &amp; DSA Enthusiast</p>
             <a href="resume.pdf" download class="btn">Download Resume</a>
         </div>
     </header>
+
     <section id="about" class="animate">
         <h2>About Me</h2>
-        <p>I am passionate about programming and solving complex problems using Data Structures and Algorithms. I enjoy building real-world projects and continuously improving my skills.</p>
+        <p>
+            I am passionate about programming and solving complex problems using Data Structures and Algorithms.
+            I enjoy building real-world projects and continuously improving my skills.
+        </p>
     </section>
+
     <section id="skills" class="animate">
         <h2>Skills</h2>
         <div class="skills-grid">
             <div class="skill">
                 <label>Java</label>
-                <div class="skill-bar"><div class="skill-progress" data-width="85%"></div></div>
+                <div class="skill-bar">
+                    <div class="skill-progress" data-width="85%"></div>
+                </div>
             </div>
             <div class="skill">
                 <label>C++</label>
-                <div class="skill-bar"><div class="skill-progress" data-width="75%"></div></div>
+                <div class="skill-bar">
+                    <div class="skill-progress" data-width="75%"></div>
+                </div>
             </div>
             <div class="skill">
                 <label>Python</label>
-                <div class="skill-bar"><div class="skill-progress" data-width="70%"></div></div>
+                <div class="skill-bar">
+                    <div class="skill-progress" data-width="70%"></div>
+                </div>
             </div>
             <div class="skill">
-                <label>HTML & CSS</label>
-                <div class="skill-bar"><div class="skill-progress" data-width="80%"></div></div>
+                <label>HTML &amp; CSS</label>
+                <div class="skill-bar">
+                    <div class="skill-progress" data-width="80%"></div>
+                </div>
             </div>
         </div>
     </section>
+
     <section id="projects" class="animate">
         <h2>Projects</h2>
         <div class="projects-grid">
             <div class="project-card">
                 <h3>Grade Calculation of a Student</h3>
                 <p>Built using C++ with OOP concepts and file handling.</p>
-                <a href="https://github.com/yukishan87-Kishan/grade-calculator" target="_blank">View on GitHub</a>
+                <a href="https://github.com/yukishan87-Kishan/grade-calculator" target="_blank" rel="noopener noreferrer">
+                    View on GitHub
+                </a>
             </div>
             <div class="project-card">
                 <h3>Portfolio Website</h3>
                 <p>Responsive personal website using HTML, CSS and JavaScript.</p>
-                <a href="https://github.com/yukishan87-Kishan/portfolio" target="_blank">View on GitHub</a>
+                <a href="https://github.com/yukishan87-Kishan/portfolio" target="_blank" rel="noopener noreferrer">
+                    View on GitHub
+                </a>
             </div>
         </div>
     </section>
+
     <section id="contact" class="animate">
         <h2>Contact</h2>
         <form class="contact-form" onsubmit="handleSubmit(event)">
@@ -136,15 +441,25 @@
             </div>
             <button type="submit">Send Message</button>
         </form>
+
+        <!-- Real icons for each platform -->
         <div class="social-links">
-            <a href="mailto:yukishan87@gmail.com">📧</a>
-            <a href="https://www.linkedin.com/in/Kishan06" target="_blank">💼</a>
-            <a href="https://github.com/yukishan87-Kishan" target="_blank">💻</a>
+            <a href="mailto:yukishan87@gmail.com" aria-label="Email">
+                <i class="fa-solid fa-envelope"></i> <!-- [web:11] -->
+            </a>
+            <a href="https://www.linkedin.com/in/Kishan06" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <i class="fa-brands fa-linkedin"></i> <!-- [web:10][web:11] -->
+            </a>
+            <a href="https://github.com/yukishan87-Kishan" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                <i class="fa-brands fa-github"></i> <!-- [web:11] -->
+            </a>
         </div>
     </section>
+
     <footer>
         <p>&copy; 2026 Kishan Y U. All Rights Reserved.</p>
     </footer>
+
     <script>
         // Theme toggle
         const toggle = document.getElementById('modeToggle');
@@ -157,7 +472,10 @@
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', e => {
                 e.preventDefault();
-                document.querySelector(anchor.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+                const target = document.querySelector(anchor.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
             });
         });
 
@@ -168,7 +486,8 @@
                     entry.target.classList.add('visible');
                 }
             });
-        });
+        }, { threshold: 0.15 });
+
         document.querySelectorAll('.animate').forEach(el => observer.observe(el));
 
         // Skill bars animation
@@ -181,7 +500,7 @@
         // Contact form handler
         function handleSubmit(e) {
             e.preventDefault();
-            alert('Thank you for your message! (Demo - integrate with backend like EmailJS for real use)');
+            alert('Thank you for your message! (Demo - connect to EmailJS/Netlify Form for real sending)');
             e.target.reset();
         }
     </script>
