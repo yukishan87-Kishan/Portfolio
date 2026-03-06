@@ -1,7 +1,7 @@
 /* ========================================
-   PROFESSIONAL PORTFOLIO CSS v1.0
+   PROFESSIONAL PORTFOLIO CSS v1.1
    ========================================
-   Refined gradients, elegant accents, clean layout
+   Refined gradients, contact box, brand‑color social icons
 */
 
 :root {
@@ -369,7 +369,7 @@ h2 {
   transform: translateX(8px);
 }
 
-/* ===== CONTACT FORM ===== */
+/* ===== CONTACT SECTION ===== */
 .contact-form {
   max-width: 800px;
   background: var(--bg-glass);
@@ -402,29 +402,96 @@ h2 {
   background: rgba(255,255,255,0.08);
 }
 
+/* ----- Contact Details Box ----- */
+.contact-details {
+  background: var(--bg-glass);
+  backdrop-filter: blur(30px);
+  padding: 2.5rem;
+  border-radius: var(--radius);
+  border: 1px solid rgba(255,255,255,0.1);
+  margin-bottom: 3rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem 3rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+}
+
+.contact-item i {
+  font-size: 1.8rem;
+  color: var(--accent-main);
+  width: 2rem;
+  text-align: center;
+}
+
+.contact-item span {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.contact-item a {
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.contact-item a:hover {
+  color: var(--accent-main);
+}
+
+/* ----- Social Icons (original brand colors) ----- */
 .social-links {
   display: flex;
   justify-content: center;
   gap: 2.5rem;
+  flex-wrap: wrap;
 }
 
 .social-links a {
   width: 70px;
   height: 70px;
-  background: var(--gradient-glow);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.8rem;
-  color: white;
+  font-size: 2rem;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.15);
+  color: var(--text-primary);
   transition: all var(--transition);
-  box-shadow: var(--shadow-glow);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
+/* Brand colors */
+.social-links a .fa-facebook-f { color: #1877f2; }
+.social-links a .fa-twitter { color: #1da1f2; }
+.social-links a .fa-linkedin-in { color: #0a66c2; }
+.social-links a .fa-github { color: #333; }
+.social-links a .fa-instagram { color: #e4405f; }
+.social-links a .fa-youtube { color: #ff0000; }
+.social-links a .fa-dribbble { color: #ea4c89; }
+.social-links a .fa-behance { color: #1769ff; }
+
+[data-theme="light"] .social-links a .fa-github { color: #24292e; }
+[data-theme="light"] .social-links a .fa-facebook-f { color: #1877f2; }
+[data-theme="light"] .social-links a .fa-twitter { color: #1da1f2; }
+[data-theme="light"] .social-links a .fa-linkedin-in { color: #0a66c2; }
+[data-theme="light"] .social-links a .fa-instagram { color: #e4405f; }
+[data-theme="light"] .social-links a .fa-youtube { color: #ff0000; }
+[data-theme="light"] .social-links a .fa-dribbble { color: #ea4c89; }
+[data-theme="light"] .social-links a .fa-behance { color: #1769ff; }
+
 .social-links a:hover {
-  transform: translateY(-10px) rotate(360deg);
-  box-shadow: 0 0 40px rgba(59,130,246,0.6);
+  transform: translateY(-8px) scale(1.1);
+  border-color: var(--accent-main);
+  box-shadow: var(--shadow-glow);
 }
 
 /* ===== ANIMATIONS ===== */
@@ -455,7 +522,7 @@ h2 {
 }
 
 @keyframes progressFill {
-  to { width: var(--progress-width, 90%); } /* Set inline style for percentage */
+  to { width: var(--progress-width, 90%); }
 }
 
 /* ===== RESPONSIVE ===== */
@@ -464,4 +531,8 @@ h2 {
   section .container { align-self: center !important; }
   nav ul { flex-direction: column; gap: 1rem; }
   .btn-primary { padding: 1.2rem 2.5rem; }
+  .contact-details { flex-direction: column; align-items: center; text-align: center; }
+  .contact-item { justify-content: center; }
+  .social-links { gap: 1.5rem; }
+  .social-links a { width: 60px; height: 60px; font-size: 1.8rem; }
 }
