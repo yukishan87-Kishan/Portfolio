@@ -1,7 +1,8 @@
 /* ========================================
-   PROFESSIONAL PORTFOLIO CSS v1.1
+   PROFESSIONAL PORTFOLIO CSS v1.2
    ========================================
-   Refined gradients, contact box, brand‑color social icons
+   Contact form hover animation + side gradient
+   Brand‑color social icons
 */
 
 :root {
@@ -370,6 +371,7 @@ h2 {
 }
 
 /* ===== CONTACT SECTION ===== */
+/* Contact Form with hover animation and side gradient */
 .contact-form {
   max-width: 800px;
   background: var(--bg-glass);
@@ -378,6 +380,33 @@ h2 {
   border-radius: var(--radius);
   border: 1px solid rgba(255,255,255,0.1);
   margin-bottom: 3rem;
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Side gradient on hover */
+.contact-form::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -5px;
+  width: 8px;
+  height: 100%;
+  background: var(--gradient-main);
+  opacity: 0;
+  transition: opacity var(--transition), left var(--transition);
+  border-radius: var(--radius) 0 0 var(--radius);
+}
+
+.contact-form:hover {
+  transform: scale(1.02) translateY(-8px);
+  box-shadow: var(--shadow-glow), var(--shadow-neon);
+}
+
+.contact-form:hover::before {
+  opacity: 1;
+  left: 0;
 }
 
 .form-group input,
