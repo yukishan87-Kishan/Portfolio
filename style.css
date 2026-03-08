@@ -1,11 +1,11 @@
 /* ========================================
-   PROFESSIONAL PORTFOLIO CSS v1.6
+   PROFESSIONAL PORTFOLIO CSS v2.1
    ========================================
-   Contact details in one line (older style)
-   Input fields with clear background and top gradient bar on focus
-   Fixed gradient line within box
-   Light mode optimized
-   Brand‑color social icons
+   Skills: bars fill on hover (dynamic)
+   Resume button: hover effect added (lift, glow, shimmer)
+   Contact form fields: colored border
+   Contact details box: border removed
+   Nav hover: lighter gradient
 */
 
 :root {
@@ -21,6 +21,7 @@
   --accent-purple: #8b5cf6;
   --gradient-main: linear-gradient(45deg, #3b82f6, #8b5cf6, #3b82f6);
   --gradient-glow: linear-gradient(45deg, #2563eb, #7c3aed, #2563eb);
+  --gradient-hover: linear-gradient(45deg, #60a5fa, #c084fc, #60a5fa); /* Lighter hover */
   --shadow-glow: 0 0 30px rgba(59, 130, 246, 0.25);
   --shadow-neon: 0 0 15px rgba(139, 92, 246, 0.2);
   --radius: 20px;
@@ -40,6 +41,7 @@
   --accent-purple: #7c3aed;
   --gradient-main: linear-gradient(45deg, #2563eb, #7c3aed, #2563eb);
   --gradient-glow: linear-gradient(45deg, #1d4ed8, #6b21a5, #1d4ed8);
+  --gradient-hover: linear-gradient(45deg, #3b82f6, #a78bfa, #3b82f6); /* Lighter for light mode */
   --shadow-glow: 0 0 30px rgba(37, 99, 235, 0.25);
   --shadow-neon: 0 0 15px rgba(124, 58, 237, 0.2);
 }
@@ -75,9 +77,9 @@ header::before {
   right: 0;
   bottom: 0;
   background: 
-    radial-gradient(circle at 20% 30%, rgba(59,130,246,0.25) 0%, transparent 70%),
-    radial-gradient(circle at 80% 70%, rgba(139,92,246,0.25) 0%, transparent 70%),
-    radial-gradient(circle at 40% 80%, rgba(56,189,248,0.2) 0%, transparent 70%);
+    radial-gradient(circle at 20% 30%, rgba(59,130,246,0.25) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(139,92,246,0.25) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(56,189,248,0.2) 0%, transparent 50%);
   animation: headerPulse 8s ease-in-out infinite;
   z-index: 1;
 }
@@ -128,7 +130,9 @@ header::before {
   text-shadow: 0 0 20px rgba(255,255,255,0.1);
 }
 
-.btn-primary {
+/* ===== BUTTONS (including Download Resume) ===== */
+.btn-primary,
+.btn-download {                     /* Download resume button */
   display: inline-block;
   padding: 1.5rem 4rem;
   background: var(--gradient-glow);
@@ -142,11 +146,13 @@ header::before {
   position: relative;
   overflow: hidden;
   animation: btnShimmer 3s infinite;
+  transition: transform var(--transition), box-shadow var(--transition);
 }
 
-.btn-primary:hover {
+.btn-primary:hover,
+.btn-download:hover {               /* Hover effect for download button */
   transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(189, 205, 241, 0.5);
+  box-shadow: 0 20px 40px rgba(37,99,235,0.5);
 }
 
 /* ===== FIXED GLASS NAV ===== */
@@ -189,9 +195,10 @@ nav a {
   position: relative;
 }
 
+/* Lighter hover background for nav links */
 nav a:hover {
   color: white;
-  background: var(--gradient-glow);
+  background: var(--gradient-hover);
   transform: translateY(-3px);
   box-shadow: var(--shadow-neon);
 }
@@ -260,6 +267,7 @@ h2 {
   overflow: hidden;
 }
 
+/* Top gradient line – hidden by default, slides in on hover */
 .skill-item::before {
   content: '';
   position: absolute;
@@ -268,7 +276,16 @@ h2 {
   right: 0;
   height: 4px;
   background: var(--gradient-main);
+  background-size: 300% 300%;
+  opacity: 0;
+  transform: translateY(-100%);
+  transition: opacity 0.3s ease, transform 0.3s ease;
   animation: gradientShift 3s infinite;
+}
+
+.skill-item:hover::before {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .skill-item:hover {
@@ -291,14 +308,19 @@ h2 {
   overflow: hidden;
 }
 
+/* Progress bar – starts at 0 width, fills on hover using CSS variable */
 .skill-progress {
   height: 100%;
   background: var(--gradient-glow);
   border-radius: 12px;
-  width: 0;
+  width: 0;  /* Initially hidden */
   position: relative;
-  animation: progressFill 2s ease-out forwards;
+  transition: width 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   box-shadow: 0 0 15px rgba(59,130,246,0.4);
+}
+
+.skill-item:hover .skill-progress {
+  width: var(--progress-width, 90%); /* Fills to target percentage */
 }
 
 .skill-progress::after {
@@ -374,33 +396,33 @@ h2 {
 }
 
 /* ===== CONTACT SECTION ===== */
-/* Contact Form – hover effect removed */
+/* Contact Form – with colored border */
 .contact-form {
   max-width: 800px;
   background: var(--bg-glass);
   backdrop-filter: blur(30px);
   padding: 4rem;
   border-radius: var(--radius);
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 2px solid var(--accent-main);  /* Colored border for the whole form */
   margin-bottom: 3rem;
   transition: border-color var(--transition);
   position: relative;
 }
 
-/* Input fields with clearer background and top gradient bar on focus */
+/* Input fields with colored border */
 .form-group {
   position: relative;
   margin-bottom: 2rem;
-  border-radius: var(--radius);        /* Match input's border radius */
-  overflow: hidden;                    /* Clip pseudo-element to rounded corners */
+  border-radius: var(--radius);
+  overflow: hidden;
 }
 
 .form-group input,
 .form-group textarea {
   width: 100%;
   padding: 1.5rem;
-  background: rgba(255,255,255,0.1);   /* Slightly more opaque for better readability */
-  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.1);
+  border: 2px solid var(--accent-main);  /* Colored border for each field */
   border-radius: var(--radius);
   color: var(--text-primary);
   font-size: 1.1rem;
@@ -409,28 +431,27 @@ h2 {
   z-index: 1;
 }
 
-/* Light mode adjustments for better contrast */
+/* Light mode adjustments */
 [data-theme="light"] .form-group input,
 [data-theme="light"] .form-group textarea {
   background: rgba(255,255,255,0.9);
-  border: 1px solid rgba(0,0,0,0.15);
+  border: 2px solid var(--accent-main);
   color: #0f172a;
 }
 
 [data-theme="light"] .form-group input:focus,
 [data-theme="light"] .form-group textarea:focus {
   background: #ffffff;
-  border-color: var(--accent-main);
+  border-color: var(--accent-glow);
   box-shadow: 0 0 0 3px rgba(37,99,235,0.15);
 }
 
-/* Remove scaling and reduce shadow intensity on focus */
 .form-group input:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: var(--accent-main);
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15); /* Softer, smaller shadow */
-  background: rgba(255,255,255,0.15); /* Slightly lighter but still readable */
+  border-color: var(--accent-glow);  /* Darker on focus */
+  box-shadow: 0 0 0 3px rgba(59,130,246,0.15);
+  background: rgba(255,255,255,0.15);
 }
 
 /* Top gradient bar for focused inputs */
@@ -447,7 +468,7 @@ h2 {
   animation: gradientShift 3s infinite;
 }
 
-/* Placeholder styling for better visibility */
+/* Placeholder styling */
 .form-group input::placeholder,
 .form-group textarea::placeholder {
   color: var(--text-secondary);
@@ -460,13 +481,13 @@ h2 {
   opacity: 1;
 }
 
-/* ----- Contact Details (older one‑line style) ----- */
+/* ----- Contact Details (border removed) ----- */
 .contact-details {
   background: var(--bg-glass);
   backdrop-filter: blur(30px);
   padding: 2.5rem;
   border-radius: var(--radius);
-  border: 1px solid rgba(255,255,255,0.1);
+  border: none;  /* Border removed as requested */
   margin-bottom: 3rem;
   display: flex;
   flex-wrap: wrap;
@@ -579,16 +600,15 @@ h2 {
   100% { background-position: 200% 0; }
 }
 
-@keyframes progressFill {
-  to { width: var(--progress-width, 90%); }
-}
-
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
   section { align-items: center !important; }
   section .container { align-self: center !important; }
   nav ul { flex-direction: column; gap: 1rem; }
-  .btn-primary { padding: 1.2rem 2.5rem; }
+  .btn-primary,
+  .btn-download {
+    padding: 1.2rem 2.5rem;
+  }
   .contact-details { flex-direction: column; align-items: center; text-align: center; }
   .contact-item { justify-content: center; }
   .social-links { gap: 1.5rem; }
